@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mahek Khan - Frontend & Backend Developer | Portfolio">
+    <meta name="keywords" content="web developer, frontend, backend, portfolio, Mahek Khan">
+
+    <title>Mahek Khan | Full Stack Developer</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <a href="#home" class="logo">Mahek</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav id="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HOME -->
+    <section class="home" id="home">
+        <div class="home-detail">
+            <h1>Mahek Khan</h1>
+            <h2>Full Stack <span>Developer</span></h2>
+            <p>
+                I build responsive web applications that solve real problems, focusing on 
+                performance, clean code, and exceptional user experience.
+            </p>
+            <div class="btn-sci">
+                <a href="cv.pdf" download class="btn">Download CV</a>
+                <div class="sci">
+                     <a href="https://www.instagram.com/_logiccrash_" target="_blank" aria-label="Instagram">
+                        <i class='fab fa-instagram'></i>
+                    </a>
+                        <a href="https://www.snapchat.com/@logiccrash1" target="_blank" aria-label="GitHub">
+                        <i class='fab fa-snapchat'></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-img">
+            <div class="img-box">
+                <img src="images/mahek.jpeg" alt="Mahek Khan - Full Stack Developer">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <h2 class="heading">My <span>Services</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Web Development</h3>
+                <p>Responsive & scalable web apps using HTML, CSS, JavaScript, React, Node.js</p>
+            </div>
+            <div class="services-box">
+                <i class='bx bxs-paint'></i>
+                <h3>UI/UX Design</h3>
+                <p>Clean, modern, and user-focused interface designs</p>
+            </div>
+            <div class="services-box">
+                <i class='bx bx-trending-up'></i>
+                <h3>Performance</h3>
+                <p>Website optimization, speed improvement & SEO</p>
+            </div>
+            <div class="services-box">
+                <i class='bx bx-data'></i>
+                <h3>Database</h3>
+                <p>SQL & NoSQL database design and management</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-box">
+                <h3>Get In Touch</h3>
+                <p>Ready to start your next project? Let's discuss your ideas!</p>
+                
+                <div class="contact-detail">
+                    <i class='bx bxs-phone'></i>
+                    <p>(+91) 9XXXXXXXX8</p>
+                </div>
+                <div class="contact-detail">
+                    <i class='bx bxs-envelope'></i>
+                    <p>mahekkhan7222@gmail.com</p>
+                </div>
+                <div class="contact-detail">
+                    <i class='bx bxs-map'></i>
+                    <p>Nizamabad, Telangana, India</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-box contact-form">
+                <h3>Send Message</h3>
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="field-box">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS -->
+    <script>
+        // Toggle mobile menu
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            menuIcon.classList.toggle('bx-x');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+            });
+        });
+
+        // Active navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+            submitBtn.disabled = true;
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(50, 57, 70, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--second-bg-color)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
