@@ -551,4 +551,14 @@ section {
     .contact-detail { justify-content: center; }
 
     .contact-detail i { margin: 0 1rem 0 0; }
+}@media (max-width: 7682px) {
+      .home-detail h1,
+    .home-detail h2,
+    .home-detail p {
+        max-width: 90%;      /* Mobile पर text width */
+        text-align: center;
+    }
+    html { font-size: 58%; }
+    header { padding: 1.5rem 5%; }
+    section { padding: 12rem 5% 4rem; }
 }
