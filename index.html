@@ -31,32 +31,35 @@
 
     <!-- HOME -->
     <section class="home" id="home">
-        <div class="home-detail">
-            <h1>Mahek Khan</h1>
-            <h2>Full Stack <span>Developer</span></h2>
-            <p>
-                I build responsive web applications that solve real problems, focusing on 
-                performance, clean code, and exceptional user experience.
-            </p>
-            <div class="btn-sci">
-                <a href="cv.pdf" download class="btn">Download CV</a>
-                <div class="sci">
-                     <a href="https://www.instagram.com/_logiccrash_" target="_blank" aria-label="Instagram">
-                        <i class='fab fa-instagram'></i>
-                    </a>
-                        <a href="https://www.snapchat.com/@logiccrash1" target="_blank" aria-label="GitHub">
-                        <i class='fab fa-snapchat'></i>
-                    </a>
-                </div>
-                </div>
-            </div>
-        </div>
 
+        <!-- IMAGE - LEFT / TOP on mobile -->
         <div class="home-img">
             <div class="img-box">
                 <img src="images/mahek.jpeg" alt="Mahek Khan - Full Stack Developer">
             </div>
         </div>
+
+        <!-- TEXT - RIGHT / Bottom on mobile -->
+        <div class="home-detail">
+            <h1>Mahek Khan</h1>
+            <h2>Full Stack <span>Developer</span></h2>
+            <p>
+                I build responsive web applications that solve real problems, focusing on
+                performance, clean code, and exceptional user experience.
+            </p>
+            <div class="btn-sci">
+                <a href="cv.pdf" download class="btn">Download CV</a>
+                <div class="sci">
+                    <a href="https://www.instagram.com/_logiccrash_" target="_blank" aria-label="Instagram">
+                        <i class='fab fa-instagram'></i>
+                    </a>
+                    <a href="https://www.snapchat.com/@logiccrash1" target="_blank" aria-label="Snapchat">
+                        <i class='fab fa-snapchat'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- SERVICES -->
@@ -94,7 +97,7 @@
             <div class="contact-box">
                 <h3>Get In Touch</h3>
                 <p>Ready to start your next project? Let's discuss your ideas!</p>
-                
+
                 <div class="contact-detail">
                     <i class='bx bxs-phone'></i>
                     <p>(+91) 9XXXXXXXX8</p>
@@ -126,7 +129,6 @@
 
     <!-- JS -->
     <script>
-        // Toggle mobile menu
         const menuIcon = document.getElementById('menu-icon');
         const navbar = document.getElementById('navbar');
 
@@ -135,7 +137,6 @@
             menuIcon.classList.toggle('bx-x');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 navbar.classList.remove('active');
@@ -143,7 +144,6 @@
             });
         });
 
-        // Active navigation on scroll
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section');
@@ -152,7 +152,6 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 150;
                 const sectionHeight = section.offsetHeight;
-                
                 if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
                 }
@@ -166,21 +165,16 @@
             });
         });
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Form submission
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', function(e) {
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -188,14 +182,13 @@
             submitBtn.disabled = true;
         });
 
-        // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(50, 57, 70, 0.95)';
+                header.style.background = 'rgba(255,255,255,0.95)';
                 header.style.backdropFilter = 'blur(10px)';
             } else {
-                header.style.background = 'var(--second-bg-color)';
+                header.style.background = 'var(--white)';
                 header.style.backdropFilter = 'none';
             }
         });
