@@ -200,7 +200,7 @@ section {
 }
 
 .home-img img {
-    width: 140%;
+    width: 150%;
     height: 140%;
     object-fit: cover;
     transition: 0.3s ease;
