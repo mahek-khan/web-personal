@@ -9,13 +9,16 @@
 
     <title>Mahek Khan | Full Stack Developer</title>
 
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
+    <!-- HEADER -->
     <header>
         <a href="#home" class="logo">Mahek</a>
         <i class='bx bx-menu' id="menu-icon"></i>
@@ -26,12 +29,17 @@
         </nav>
     </header>
 
+    <!-- HOME -->
     <section class="home" id="home">
+
+        <!-- IMAGE - LEFT / TOP on mobile -->
         <div class="home-img">
             <div class="img-box">
                 <img src="images/mahek.jpeg" alt="Mahek Khan - Full Stack Developer">
             </div>
         </div>
+
+        <!-- TEXT - RIGHT / Bottom on mobile -->
         <div class="home-detail">
             <h1>Mahek Khan</h1>
             <h2>Full Stack <span>Developer</span></h2>
@@ -51,8 +59,10 @@
                 </div>
             </div>
         </div>
+
     </section>
 
+    <!-- SERVICES -->
     <section class="services" id="services">
         <h2 class="heading">My <span>Services</span></h2>
         <div class="services-container">
@@ -79,12 +89,15 @@
         </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
         <div class="contact-container">
+            <!-- Contact Info -->
             <div class="contact-box">
                 <h3>Get In Touch</h3>
                 <p>Ready to start your next project? Let's discuss your ideas!</p>
+
                 <div class="contact-detail">
                     <i class='bx bxs-phone'></i>
                     <p>(+91) 9XXXXXXXX8</p>
@@ -98,10 +111,11 @@
                     <p>Nizamabad, Telangana, India</p>
                 </div>
             </div>
+
+            <!-- Contact Form -->
             <div class="contact-box contact-form">
                 <h3>Send Message</h3>
-                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="3297a9a7-f089-4d23-946b-7dc1248e073e">
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <div class="field-box">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
@@ -113,7 +127,73 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <!-- JS -->
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            menuIcon.classList.toggle('bx-x');
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
+            submitBtn.disabled = true;
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+        <script src="scrip.js"></script>
 
 </body>
 </html>
