@@ -1,93 +1,72 @@
-emailjs.init('YOUR_PUBLIC_KEY');
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { Toaster, toast } from "react-hot-toast";
 
-const menuIcon = document.getElementById('menu-icon');
-const navbar = document.getElementById('navbar');
+function App() {
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    message: ""
+  });
 
-menuIcon.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-    menuIcon.classList.toggle('bx-x');
-});
+  const [loading, setLoading] = useState(false);
 
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        navbar.classList.remove('active');
-        menuIcon.classList.remove('bx-x');
-    });
-});
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    const scrollY = window.pageYOffset;
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-});
+    try {
+      await emailjs.send(
+        "service_9elr00o",
+        "template_rsy91uh",
+        formData,
+        "92CWYz6xrtzZ5gMhE"
+      );
 
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(255,255,255,0.95)';
-        header.style.backdropFilter = 'blur(10px)';
-    } else {
-        header.style.background = 'var(--white)';
-        header.style.backdropFilter = 'none';
+      toast.success("Message sent!");
+      setFormData({
+        user_name: "",
+        user_email: "",
+        message: ""
+      });
+
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to send");
     }
-});
 
-function showToast(message, type = 'success') {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.className = `toast ${type} show`;
-    setTimeout(() => { toast.className = 'toast'; }, 4000);
+    setLoading(false);
+  };
+
+  return (
+    <div style={{ padding: "40px", maxWidth: "400px", margin: "auto" }}>
+      <Toaster />
+
+      <h2>Contact Me</h2>
+
+      <form onSubmit={sendEmail}>
+        <input name="user_name" value={formData.user_name} onChange={handleChange} placeholder="Your Name" required />
+        <br /><br />
+
+        <input type="email" name="user_email" value={formData.user_email} onChange={handleChange} placeholder="Your Email" required />
+        <br /><br />
+
+        <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" required />
+        <br /><br />
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Sending..." : "Send"}
+        </button>
+      </form>
+    </div>
+  );
 }
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const btn = document.getElementById('submitBtn');
-
-    if (!name || !email || !message) {
-        showToast('Please fill all fields!', 'error');
-        return;
-    }
-
-    btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
-    btn.disabled = true;
-
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-        from_name: name,
-        from_email: email,
-        message: message,
-        to_email: 'mahekkhan7222@gmail.com'
-    }).then(() => {
-        showToast('✓ Message sent! I will reply soon.', 'success');
-        this.reset();
-    }).catch(() => {
-        showToast('Failed to send. Please try again!', 'error');
-    }).finally(() => {
-        btn.innerHTML = 'Send Message';
-        btn.disabled = false;
-    });
-});
+export default App;
