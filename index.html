@@ -6,44 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mahek Khan - Frontend & Backend Developer | Portfolio">
     <meta name="keywords" content="web developer, frontend, backend, portfolio, Mahek Khan">
+
     <title>Mahek Khan | Full Stack Developer</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .toast {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            padding: 1.4rem 2.5rem;
-            border-radius: 1rem;
-            font-size: 1.5rem;
-            font-weight: 500;
-            z-index: 9999;
-            opacity: 0;
-            transform: translateX(120%);
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .toast.success {
-            background: #d1fae5;
-            color: #065f46;
-            border-left: 4px solid #10b981;
-        }
-        .toast.error {
-            background: #fee2e2;
-            color: #991b1b;
-            border-left: 4px solid #ef4444;
-        }
-        .toast.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    </style>
 </head>
-<body>
 
-    <div class="toast" id="toast"></div>
+<body>
 
     <header>
         <a href="#home" class="logo">Mahek</a>
@@ -64,7 +35,10 @@
         <div class="home-detail">
             <h1>Mahek Khan</h1>
             <h2>Full Stack <span>Developer</span></h2>
-            <p>I build responsive web applications that solve real problems, focusing on performance, clean code, and exceptional user experience.</p>
+            <p>
+                I build responsive web applications that solve real problems, focusing on
+                performance, clean code, and exceptional user experience.
+            </p>
             <div class="btn-sci">
                 <a href="cv.pdf" download class="btn">Download CV</a>
                 <div class="sci">
@@ -133,7 +107,7 @@
                         <input type="email" name="email" placeholder="Your Email" required>
                         <textarea name="message" placeholder="Your Message" required></textarea>
                     </div>
-                    <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                    <button type="submit" class="btn">Send Message</button>
                 </form>
             </div>
         </div>
