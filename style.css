@@ -89,10 +89,14 @@ nav a::after {
 }
 
 nav a:hover::after,
-nav a.active::after { width: 100%; }
+nav a.active::after { 
+    width: 100%; 
+}
 
 nav a:hover,
-nav a.active { color: var(--dark-blue); }
+nav a.active { 
+    color: var(--dark-blue); 
+}
 
 /* SECTIONS */
 section {
@@ -126,7 +130,9 @@ section {
     margin-bottom: 2rem;
 }
 
-.home-detail h2 span { color: var(--lite-blue); }
+.home-detail h2 span { 
+    color: var(--lite-blue); 
+}
 
 .home-detail p {
     font-size: 1.8rem;
@@ -146,6 +152,7 @@ section {
     font-weight: 500;
     box-shadow: var(--shadow);
     transition: 0.3s ease;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -356,7 +363,9 @@ section {
 }
 
 .contact-form input::placeholder,
-.contact-form textarea::placeholder { color: var(--text-light); }
+.contact-form textarea::placeholder { 
+    color: var(--text-light); 
+}
 
 .contact-form button {
     width: 100%;
@@ -365,16 +374,43 @@ section {
     font-weight: 600;
 }
 
+/* ── 1200px (Fixed from 7682px) ── */
+@media (max-width: 1200px) {
+    .home-detail h1,
+    .home-detail h2,
+    .home-detail p {
+        max-width: 90%;
+        text-align: center;
+    }
+    html { 
+        font-size: 58%; 
+    }
+    header { 
+        padding: 1.5rem 5%; 
+    }
+    section { 
+        padding: 12rem 5% 4rem; 
+    }
+}
+
 /* ── 992px ── */
 @media (max-width: 992px) {
-    html { font-size: 58%; }
-    header { padding: 1.5rem 5%; }
-    section { padding: 12rem 5% 4rem; }
+    html { 
+        font-size: 58%; 
+    }
+    header { 
+        padding: 1.5rem 5%; 
+    }
+    section { 
+        padding: 12rem 5% 4rem; 
+    }
 }
 
 /* ── 768px ── */
 @media (max-width: 768px) {
-    #menu-icon { display: block; }
+    #menu-icon { 
+        display: block; 
+    }
 
     nav {
         position: absolute;
@@ -388,7 +424,9 @@ section {
         display: none;
     }
 
-    nav.active { display: block; }
+    nav.active { 
+        display: block; 
+    }
 
     nav a {
         display: block;
@@ -436,20 +474,38 @@ section {
         gap: 1.5rem;
     }
 
-    .sci { justify-content: center; }
+    .sci { 
+        justify-content: center; 
+    }
 
-    .heading { font-size: 3.5rem; }
+    .heading { 
+        font-size: 3.5rem; 
+    }
 
-    .contact-container { grid-template-columns: 1fr; gap: 3rem; }
-    .contact-form .field-box { grid-template-columns: 1fr; }
-    .services-container { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-container { 
+        grid-template-columns: 1fr; 
+        gap: 3rem; 
+    }
+    
+    .contact-form .field-box { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .services-container { 
+        grid-template-columns: 1fr; 
+        gap: 2rem; 
+    }
 }
 
 /* ── 480px ── */
 @media (max-width: 480px) {
-    html { font-size: 52%; }
+    html { 
+        font-size: 52%; 
+    }
 
-    section { padding: 10rem 5% 4rem; }
+    section { 
+        padding: 10rem 5% 4rem; 
+    }
 
     .home {
         flex-direction: column;
@@ -548,17 +604,11 @@ section {
         text-align: center;
     }
 
-    .contact-detail { justify-content: center; }
-
-    .contact-detail i { margin: 0 1rem 0 0; }
-}@media (max-width: 7682px) {
-      .home-detail h1,
-    .home-detail h2,
-    .home-detail p {
-        max-width: 90%;      /* Mobile पर text width */
-        text-align: center;
+    .contact-detail { 
+        justify-content: center; 
     }
-    html { font-size: 58%; }
-    header { padding: 1.5rem 5%; }
-    section { padding: 12rem 5% 4rem; }
+
+    .contact-detail i { 
+        margin: 0 1rem 0 0; 
+    }
 }
