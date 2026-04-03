@@ -1,7 +1,5 @@
-/* GOOGLE FONT */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +9,6 @@
     outline: none;
     font-family: 'Poppins', sans-serif;
 }
-
-/* VARIABLES */
 :root {
     --primary-bg: #f0f8ff;
     --secondary-bg: #e6f3ff;
@@ -24,7 +20,7 @@
     --shadow: 0 4px 20px rgba(79, 195, 247, 0.15);
 }
 
-/* BASE */
+
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
