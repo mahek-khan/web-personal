@@ -598,31 +598,4 @@ section {
     .contact-detail i { 
         margin: 0 1rem 0 0; 
     }
-}.toast {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    padding: 1.4rem 2.5rem;
-    border-radius: 1rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-    z-index: 9999;
-    opacity: 0;
-    transform: translateX(120%);
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
-.toast.success {
-    background: #d1fae5;
-    color: #065f46;
-    border-left: 4px solid #10b981;
-}
-.toast.error {
-    background: #fee2e2;
-    color: #991b1b;
-    border-left: 4px solid #ef4444;
-}
-.toast.show {
-    opacity: 1;
-    transform: translateX(0);
 }
